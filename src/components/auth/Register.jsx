@@ -1,5 +1,5 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
@@ -309,17 +309,6 @@ const Register = () => {
                             </span>
                         )}
                     </button>
-                    <div className="">
-                        <p className=" pt-6">
-                            Don&#39;t have any account?{" "}
-                            <Link
-                                className="underline text-[#94f3b0] ps-2"
-                                to={"/sign-in"}
-                            >
-                                Sign In
-                            </Link>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>

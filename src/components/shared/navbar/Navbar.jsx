@@ -180,6 +180,7 @@ function Navbar() {
                             <p className="text-center">
                                 Don&#39;t have any account?{" "}
                                 <Link
+                                    onClick={() => setOpenModal(false)}
                                     to={"/register"}
                                     className="text-[#31a379]"
                                 >
