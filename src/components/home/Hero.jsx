@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import banner from "../../assets/banner.png";
 import { useContext, useState } from "react";
 import { Modal } from "flowbite-react";
@@ -8,16 +8,16 @@ import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 
 const Hero = () => {
-    const { user, signInWithGoogle } = useContext(AuthContext);
+    const { user, signInWithGoogle, signInUser } = useContext(AuthContext);
     const [openModal, setOpenModal] = useState(false);
     const [googleButtonLoading, setGoogleButtonLoading] = useState(false);
     const [signInWithGoogleError, setSignInWithGoogleError] = useState("");
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
+    const navigate = useNavigate();
 
     const handleSignInWithGoogle = () => {
         setGoogleButtonLoading(true);
@@ -25,6 +25,7 @@ const Hero = () => {
         signInWithGoogle()
             .then((result) => {
                 console.log(result);
+                navigate("/management");
                 setGoogleButtonLoading(false);
             })
             .catch((err) => {
@@ -39,7 +40,16 @@ const Hero = () => {
                 });
             });
     };
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const email = data.email;
+        const password = data.password;
+        signInUser(email, password)
+            .then((res) => {
+                console.log(res);
+                navigate("/management");
+            })
+            .catch((err) => console.log(err));
+    };
     return (
         <section className="w-full backdrop-blur-2xl">
             {/* login modal  */}
@@ -59,18 +69,36 @@ const Hero = () => {
                                     Your Email
                                 </label>
                                 <input
+                                    {...register("email", {
+                                        required: true,
+                                    })}
                                     type="email"
                                     className="w-full mt-1 rounded-md bg-slate-100 border-0 p-3"
                                 />
+                                {/* error message */}
+                                <label className="block md:w-64 w-full  text-sm text-[#d63031] pt-1">
+                                    {errors.email && (
+                                        <span>First Name is required *</span>
+                                    )}
+                                </label>
                             </div>
                             <div className="mt-4">
                                 <label htmlFor="email" className="text-sm">
                                     Password
                                 </label>
                                 <input
+                                    {...register("password", {
+                                        required: true,
+                                    })}
                                     type="password"
                                     className="w-full mt-1 rounded-md bg-slate-100 border-0 p-3"
                                 />
+                                {/* error message */}
+                                <label className="block md:w-64 w-full  text-sm text-[#d63031] pt-1">
+                                    {errors.password && (
+                                        <span>First Name is required *</span>
+                                    )}
+                                </label>
                             </div>
                             <button
                                 className="w-full py-3 mt-4 bg-[#6CF2C0] rounded-md"

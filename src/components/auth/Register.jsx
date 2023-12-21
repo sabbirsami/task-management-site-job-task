@@ -1,9 +1,9 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import registerImage from "../../assets/banner-03.png";
+import { Link, useNavigate } from "react-router-dom";
+
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { BsArrowLeft } from "react-icons/bs";
+
 import { Controller, useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import { updateProfile } from "firebase/auth";
@@ -20,7 +20,7 @@ const Register = () => {
         control,
         formState: { errors },
     } = useForm();
-    const location = useLocation();
+
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
@@ -41,6 +41,8 @@ const Register = () => {
                     photoURL: photoUrl,
                 })
                     .then(() => {
+                        setButtonLoading(false);
+                        navigate("/management");
                         toast.success("Successfully Register", {
                             duration: 2000,
                             className: "mt-32",
@@ -83,6 +85,7 @@ const Register = () => {
         setGoogleButtonLoading(true);
         signInWithGoogle()
             .then((result) => {
+                navigate("/management");
                 console.log(result);
             })
             .catch((err) => {
