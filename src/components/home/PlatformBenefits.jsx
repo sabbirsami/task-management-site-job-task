@@ -1,7 +1,7 @@
 const PlatformBenefits = () => {
     return (
         <section className="container mx-auto md:px-6 px-2">
-            <div className="py-16">
+            <div className="md:py-16 pt-0 pb-16">
                 <h2 className="md:text-6xl text-3xl md:px-0 px-2 font-medium">
                     Who Benefits from Our Platform?
                 </h2>
