@@ -5,3 +5,12 @@
 body {
     font-family: "Roboto", sans-serif;
 }
+.sidebar-bg div {
+    background-color: #091017 !important;
+}
+.sidebar-bg div div {
+    width: 100% !important;
+}
+.sidebar-bg a .active {
+    background-color: white !important;
+}
