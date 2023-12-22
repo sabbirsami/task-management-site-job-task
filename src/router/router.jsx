@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/management/manage-tasks",
-                element: "task",
+                element: <ManageTasks />,
             },
             {
                 path: "/management/add-task",
