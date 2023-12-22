@@ -60,7 +60,7 @@ const AddNewTask = () => {
             <h3 className=" p-4  rounded-md  bg-gradient-to-r from-[#94f3b0] to-[#7abf88] font-semibold mb-6 text-black">
                 Add New Task
             </h3>
-            <div className="p-12 rounded-xl bg-[#1E2530]">
+            <div className="xl:p-12 md:p-6 p-3 rounded-xl bg-[#1E2530]">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid ">
                         <div className=" flex gap-6">
@@ -83,7 +83,7 @@ const AddNewTask = () => {
                                 </label>
                             </div>
                         </div>
-                        <div className="mt-3 flex gap-6">
+                        <div className="mt-3 xl:flex gap-6">
                             <div className="mt-3 ">
                                 <label className="mt-3" htmlFor="PriorityLevel">
                                     Priority Level{" "}
