@@ -51,10 +51,10 @@ const SidebarNav = () => {
                                     />
                                 </div>
                                 <div className="col-span-6 ps-2">
-                                    <p className="mb-0">
+                                    <p className="-mb-1">
                                         {user?.displayName?.split(" ")[0]}
                                     </p>
-                                    <span className="text-sm">
+                                    <span className="text-sm text-white/60">
                                         {user?.email}
                                     </span>
                                 </div>

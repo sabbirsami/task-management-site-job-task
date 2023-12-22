@@ -1,0 +1,51 @@
+[
+    {
+        "title": "Create User Authentication",
+        "description": "Implement user registration, login, and logout functionality. Ensure a seamless and secure user experience.",
+        "deadline": "2024-01-31",
+        "priority": "high",
+        "status": "to-do"
+    },
+    {
+        "title": "Implement Google Sign-In",
+        "description": "Integrate Google sign-in for user authentication. Enhance user convenience and authentication options.",
+        "deadline": "2024-02-15",
+        "priority": "moderate",
+        "status": "complete"
+    },
+    {
+        "title": "Design Landing Page",
+        "description": "Create an attractive landing page for the website. Capture user attention with visually appealing elements and strategically design the layout for a positive and engaging user experience.",
+        "deadline": "2024-02-28",
+        "priority": "low",
+        "status": "to-do"
+    },
+    {
+        "title": "Create Task Management Dashboard",
+        "description": "Build the dashboard to display tasks and manage them. Centralize task management for improved productivity and organization.",
+        "deadline": "2024-03-15",
+        "priority": "high",
+        "status": "ongoing"
+    },
+    {
+        "title": "Implement Drag-and-Drop Functionality",
+        "description": "Enable users to move tasks between 'To-Do', 'Ongoing', and 'Completed'. Streamline task organization and workflow customization.",
+        "deadline": "2024-04-01",
+        "priority": "moderate",
+        "status": "ongoing"
+    },
+    {
+        "title": "Integrate React Hook Form",
+        "description": "Use React Hook Form for creating tasks. Leverage the power of React hooks for efficient and dynamic form handling.",
+        "deadline": "2023-04-15",
+        "priority": "high",
+        "status": "to-do"
+    },
+    {
+        "title": "Implement Task Deletion",
+        "description": "Allow users to delete tasks from the dashboard. Provide users with the flexibility to manage their task list effortlessly.",
+        "deadline": "2024-05-01",
+        "priority": "moderate",
+        "status": "to-do"
+    }
+]

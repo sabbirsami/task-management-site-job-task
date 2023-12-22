@@ -3,7 +3,7 @@ import SidebarNav from "./sidebar/SIdebar";
 
 const Dashboard = () => {
     return (
-        <section className="">
+        <section className="bg-[#091017]">
             <div className="flex">
                 <SidebarNav />
 
