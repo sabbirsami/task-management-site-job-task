@@ -1,13 +1,25 @@
+import { motion } from "framer-motion";
+
 const PlatformBenefits = () => {
     return (
         <section className="container mx-auto md:px-6 px-2">
             <div className="md:py-16 pt-0 pb-16">
-                <h2 className="md:text-6xl text-3xl md:px-0 px-2 font-medium">
+                <motion.h2
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="md:text-6xl text-3xl md:px-0 px-2 font-medium"
+                >
                     Who Benefits from Our Platform?
-                </h2>
+                </motion.h2>
                 <div className="mt-16 border-t border-dashed border-white/50">
                     <div className="grid lg:grid-cols-3 xl:gap-8 gap-6 md:px-6 -mt-4 text-black">
-                        <div className="flex gap-3">
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="flex gap-3"
+                        >
                             <div className="">
                                 <span className="py-3 font-semibold px-4 inline-block bg-[#BCECD7] rounded-2xl">
                                     01
@@ -30,8 +42,13 @@ const PlatformBenefits = () => {
                                     seamlessly.
                                 </li>
                             </div>
-                        </div>
-                        <div className="flex gap-3">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="flex gap-3"
+                        >
                             <div className="">
                                 <span className="py-3 font-semibold px-4 inline-block bg-[#CACDFF] rounded-2xl">
                                     02
@@ -53,8 +70,13 @@ const PlatformBenefits = () => {
                                     consistently.
                                 </li>
                             </div>
-                        </div>
-                        <div className="flex gap-3">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1 }}
+                            className="flex gap-3"
+                        >
                             <div className="">
                                 <span className="py-3 font-semibold px-4 inline-block bg-[#FBE2AA] rounded-2xl">
                                     03
@@ -76,7 +98,7 @@ const PlatformBenefits = () => {
                                     roadblocks.
                                 </li>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

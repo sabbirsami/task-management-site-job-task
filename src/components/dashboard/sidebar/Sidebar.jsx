@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthProvider";
 import { FaPlus } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const SidebarNav = () => {
     const { user } = useContext(AuthContext);
@@ -18,34 +19,60 @@ const SidebarNav = () => {
         >
             <Sidebar.Items className="flex flex-col  justify-between h-[96vh] w-full bg-[#091017] text-white p-2">
                 <Sidebar.ItemGroup className="w-full">
-                    <div className="pt-2">
-                        <img
-                            className="lg:h-8 lg:block hidden"
-                            src={logo}
-                            alt=""
-                        />
-                        <img className="lg:hidden h-6" src={logoTab} alt="" />
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="pt-2"
+                    >
+                        <NavLink to={"/"}>
+                            <img
+                                className="lg:h-8 lg:block hidden"
+                                src={logo}
+                                alt=""
+                            />
+                            <img
+                                className="lg:hidden h-6"
+                                src={logoTab}
+                                alt=""
+                            />
+                        </NavLink>
+                    </motion.div>
                     <NavLink
                         to={"/management/manage-tasks"}
                         className={"w-full"}
                     >
-                        <li className="flex items-center gap-3 mt-8 pt-8 w-full">
+                        <motion.li
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7 }}
+                            className="flex items-center gap-3 mt-8 pt-8 w-full"
+                        >
                             <HiViewBoards className="text-2xl"></HiViewBoards>{" "}
                             <span className="lg:block hidden">Manage Task</span>
-                        </li>
+                        </motion.li>
                     </NavLink>
                     <NavLink to={"/management/add-task"} className={"w-full"}>
-                        <li className="flex items-center gap-3 pt-6 w-full">
+                        <motion.li
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.9 }}
+                            className="flex items-center gap-3 pt-6 w-full"
+                        >
                             <FaPlus className="text-2xl"></FaPlus>{" "}
                             <span className="lg:block hidden">
                                 Add New Task
                             </span>
-                        </li>
+                        </motion.li>
                     </NavLink>
                 </Sidebar.ItemGroup>
                 <Sidebar.ItemGroup className="w-full border-0 mb-6">
-                    <span className="flex gap-2 items-center">
+                    <motion.span
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1 }}
+                        className="flex gap-2 items-center"
+                    >
                         <span className=" w-full rounded-xl ">
                             <div className="lg:grid grid-cols-9 justify-between items-center  hidden">
                                 <div className="col-span-2">
@@ -120,7 +147,7 @@ const SidebarNav = () => {
                                 </button>
                             </div>
                         </span>
-                    </span>
+                    </motion.span>
                 </Sidebar.ItemGroup>
             </Sidebar.Items>
         </Sidebar>

@@ -4,8 +4,10 @@ import { MdDoubleArrow } from "react-icons/md";
 import { Avatar, Dropdown } from "flowbite-react";
 import { BiSolidMessageSquare } from "react-icons/bi";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
-const Task = ({ task, refetch }) => {
+const Task = ({ task, refetch, idx }) => {
+    let speed = idx * 0.3;
     const handleDeleteTask = (id) => {
         fetch(`http://localhost:5000/tasks/${id}`, {
             method: "DELETE",
@@ -18,7 +20,12 @@ const Task = ({ task, refetch }) => {
             });
     };
     return (
-        <div className="mt-3 bg-[#1E2530] rounded-md p-6">
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 + speed }}
+            className="mt-3 bg-[#1E2530] rounded-md p-6"
+        >
             <div className=" flex items-center gap-2 justify-between">
                 <h2 className="font-semibold text-lg">{task.title}</h2>
                 <button className="col-span-1">
@@ -91,13 +98,13 @@ const Task = ({ task, refetch }) => {
                     <span className="text-xs pt-0.5">{task.title.length}</span>
                 </p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
 Task.propTypes = {
     task: PropTypes.object,
-    index: PropTypes.number,
+    idx: PropTypes.number,
     refetch: PropTypes.func,
 };
 

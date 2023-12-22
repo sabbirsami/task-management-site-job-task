@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa6";
 import { AuthContext } from "../auth/AuthProvider";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 const Hero = () => {
@@ -230,16 +231,31 @@ const Hero = () => {
                 </Modal.Body>
             </Modal>
             <div className="container mx-auto px-6">
-                <h2 className="xl:text-7xl lg:text-7xl md:text-5xl text-2xl font-bold max-w-4xl text-center mx-auto pt-20 pb-6">
+                <motion.h2
+                    className="xl:text-7xl lg:text-7xl md:text-5xl text-2xl font-bold max-w-4xl text-center mx-auto pt-20 pb-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
                     Make Your Management Way More Easier Then Ever
-                </h2>
-                <p className=" max-w-3xl text-center mx-auto  md:pb-10 pb-6 opacity-80 md:text-base text-sm">
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className=" max-w-3xl text-center mx-auto  md:pb-10 pb-6 opacity-80 md:text-base text-sm"
+                >
                     Boost productivity with TaskTo., the ultimate task
                     management solution. Effortlessly organize, prioritize, and
                     track tasks for seamless project success. Try it now for
                     streamlined efficiency!
-                </p>
-                <div className="text-center space-x-3 pb-20">
+                </motion.p>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center space-x-3 pb-20"
+                >
                     {user ? (
                         <button className="" onClick={() => setOpenModal(true)}>
                             <NavLink
@@ -256,15 +272,20 @@ const Hero = () => {
                             </span>
                         </button>
                     )}
-                </div>
+                </motion.div>
             </div>
-            <div className="border-b mb-20 ">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="border-b mb-20 "
+            >
                 <img
                     src={banner}
                     className="container mx-auto shadow-xl"
                     alt=""
                 />
-            </div>
+            </motion.div>
         </section>
     );
 };
