@@ -4,6 +4,7 @@ import Home from "../components/home/Home";
 import Register from "../components/auth/Register";
 import ErrorPage from "../components/shared/errorPage/ErrorPage";
 import Dashboard from "../components/dashboard/Dashboard";
+import AddNewTask from "../components/dashboard/addNewTask/AddNewTask";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: "/management/manage-tasks",
                 element: "task",
+            },
+            {
+                path: "/management/add-task",
+                element: <AddNewTask />,
             },
         ],
     },
