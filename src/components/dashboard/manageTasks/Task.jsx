@@ -32,10 +32,17 @@ const Task = ({ task, refetch }) => {
                             </span>
                         )}
                     >
-                        <Dropdown.Item>Update</Dropdown.Item>
+                        <Dropdown.Item>
+                            <button className="text-green-500 font-semibold">
+                                Update
+                            </button>
+                        </Dropdown.Item>
                         <Dropdown.Item>
                             {" "}
-                            <button onClick={() => handleDeleteTask(task._id)}>
+                            <button
+                                className="text-red-500 font-semibold"
+                                onClick={() => handleDeleteTask(task._id)}
+                            >
                                 Delete
                             </button>{" "}
                         </Dropdown.Item>

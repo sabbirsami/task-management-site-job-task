@@ -65,7 +65,7 @@ const SidebarNav = () => {
                                 </div>
                                 <button className="col-span-1">
                                     <Dropdown
-                                        className="right-0 z-50 bg-white"
+                                        className="right-0 z-50 bg-white w-28 border-0 font-medium "
                                         label=""
                                         dismissOnClick={false}
                                         renderTrigger={() => (
@@ -74,7 +74,7 @@ const SidebarNav = () => {
                                             </span>
                                         )}
                                     >
-                                        <Dropdown.Item className="bg-white inline">
+                                        <Dropdown.Item className="bg-white inline w-28 text-red-500">
                                             Log Out
                                         </Dropdown.Item>
                                     </Dropdown>
@@ -113,7 +113,7 @@ const SidebarNav = () => {
                                                 </span>
                                             </div>
                                         </Dropdown.Item>
-                                        <Dropdown.Item className="bg-white inline">
+                                        <Dropdown.Item className="bg-white inline ">
                                             Log Out
                                         </Dropdown.Item>
                                     </Dropdown>

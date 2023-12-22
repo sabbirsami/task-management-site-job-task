@@ -44,7 +44,7 @@ const ManageTasks = () => {
                     </Link>
                 </div>
             </div>
-            <div className="grid md:grid-cols-3 ld:gap-6 gap-2  mt-6">
+            <div className="grid md:grid-cols-3 lg:gap-6 gap-2  mt-6">
                 <div>
                     <div className="bg-[#1E2530] px-6 py-4 flex items-center gap-4 rounded-md">
                         <LuListTodo className="text-2xl" />{" "}
