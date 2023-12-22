@@ -5,13 +5,14 @@ import { Sidebar } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthProvider";
+import { FaPlus } from "react-icons/fa";
 
 const SidebarNav = () => {
     const { user } = useContext(AuthContext);
     console.log(user);
     return (
         <Sidebar
-            className="bg-[#091017] sidebar-bg text-white border-e"
+            className="bg-[#091017] sidebar-bg text-white border-e sticky top-0"
             aria-label="Sidebar with content separator example "
         >
             <Sidebar.Items className="flex flex-col  justify-between h-[96vh] w-full bg-[#091017] text-white p-4">
@@ -21,8 +22,20 @@ const SidebarNav = () => {
                     </div>
                     <li className="flex items-center gap-3 mt-8 pt-8 w-full">
                         <HiViewBoards className="text-2xl"></HiViewBoards>{" "}
-                        <NavLink to={"manage-tasks"} className={"w-full"}>
+                        <NavLink
+                            to={"/management/manage-tasks"}
+                            className={"w-full"}
+                        >
                             Manage Task
+                        </NavLink>
+                    </li>
+                    <li className="flex items-center gap-3 mt-8 pt-8 w-full">
+                        <FaPlus className="text-2xl"></FaPlus>{" "}
+                        <NavLink
+                            to={"/management/add-task"}
+                            className={"w-full"}
+                        >
+                            Add New Task
                         </NavLink>
                     </li>
                 </Sidebar.ItemGroup>

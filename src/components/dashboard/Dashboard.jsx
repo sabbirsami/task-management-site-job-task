@@ -6,6 +6,7 @@ const Dashboard = () => {
         <section className="">
             <div className="flex">
                 <SidebarNav />
+
                 <Outlet />
             </div>
         </section>
