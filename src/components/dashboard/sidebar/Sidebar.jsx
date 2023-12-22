@@ -1,7 +1,7 @@
 import logo from "../../../assets/logo.png";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { HiViewBoards } from "react-icons/hi";
-import { Sidebar } from "flowbite-react";
+import { Dropdown, Sidebar } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthProvider";
@@ -59,7 +59,20 @@ const SidebarNav = () => {
                                     </span>
                                 </div>
                                 <button className="col-span-1">
-                                    <BsThreeDotsVertical />
+                                    <Dropdown
+                                        className="right-0 z-50 bg-white"
+                                        label=""
+                                        dismissOnClick={false}
+                                        renderTrigger={() => (
+                                            <span>
+                                                <BsThreeDotsVertical />
+                                            </span>
+                                        )}
+                                    >
+                                        <Dropdown.Item className="bg-white inline">
+                                            Log Out
+                                        </Dropdown.Item>
+                                    </Dropdown>
                                 </button>
                             </div>
                         </span>

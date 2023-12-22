@@ -6,6 +6,7 @@ import ErrorPage from "../components/shared/errorPage/ErrorPage";
 import Dashboard from "../components/dashboard/Dashboard";
 import AddNewTask from "../components/dashboard/addNewTask/AddNewTask";
 import ManageTasks from "../components/dashboard/manageTasks/ManageTasks";
+import PrivateRoute from "../components/shared/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/management",
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         errorElement: <ErrorPage />,
         children: [
             {
