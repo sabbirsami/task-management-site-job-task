@@ -9,7 +9,11 @@ import Task from "./Task";
 import { useEffect, useState } from "react";
 
 const ManageTasks = () => {
-    const { data: tasks, isLoading } = useQuery({
+    const {
+        data: tasks = [],
+        isLoading,
+        refetch,
+    } = useQuery({
         queryKey: "tasks",
         queryFn: () =>
             fetch("http://localhost:5000/tasks")
@@ -111,7 +115,12 @@ const ManageTasks = () => {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                         >
-                                                            <Task task={task} />
+                                                            <Task
+                                                                refetch={
+                                                                    refetch
+                                                                }
+                                                                task={task}
+                                                            />
                                                         </div>
                                                     )}
                                                 </Draggable>
@@ -150,7 +159,12 @@ const ManageTasks = () => {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                         >
-                                                            <Task task={task} />
+                                                            <Task
+                                                                refetch={
+                                                                    refetch
+                                                                }
+                                                                task={task}
+                                                            />
                                                         </div>
                                                     )}
                                                 </Draggable>
@@ -189,7 +203,12 @@ const ManageTasks = () => {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                         >
-                                                            <Task task={task} />
+                                                            <Task
+                                                                refetch={
+                                                                    refetch
+                                                                }
+                                                                task={task}
+                                                            />
                                                         </div>
                                                     )}
                                                 </Draggable>

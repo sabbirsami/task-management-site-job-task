@@ -4,8 +4,20 @@ import { BsStopwatchFill, BsThreeDotsVertical } from "react-icons/bs";
 import { MdDoubleArrow } from "react-icons/md";
 import { Avatar, Dropdown } from "flowbite-react";
 import { BiSolidMessageSquare } from "react-icons/bi";
+import toast from "react-hot-toast";
 
-const Task = ({ task, index }) => {
+const Task = ({ task, index, refetch }) => {
+    const handleDeleteTask = (id) => {
+        fetch(`http://localhost:5000/tasks/${id}`, {
+            method: "DELETE",
+        })
+            .then((rsc) => rsc.json())
+            .then((result) => {
+                console.log(result);
+                toast.success("Successfully task deleted");
+                refetch();
+            });
+    };
     return (
         <Draggable draggableId={task._id} index={index}>
             {(provided) => (
@@ -29,7 +41,16 @@ const Task = ({ task, index }) => {
                                 )}
                             >
                                 <Dropdown.Item>Update</Dropdown.Item>
-                                <Dropdown.Item>Delete</Dropdown.Item>
+                                <Dropdown.Item>
+                                    {" "}
+                                    <button
+                                        onClick={() =>
+                                            handleDeleteTask(task._id)
+                                        }
+                                    >
+                                        Delete
+                                    </button>{" "}
+                                </Dropdown.Item>
                             </Dropdown>
                         </button>
                     </div>
@@ -90,6 +111,7 @@ const Task = ({ task, index }) => {
 Task.propTypes = {
     task: PropTypes.object,
     index: PropTypes.number,
+    refetch: PropTypes.func,
 };
 
 export default Task;

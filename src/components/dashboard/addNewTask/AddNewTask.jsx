@@ -1,32 +1,66 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const AddNewTask = () => {
     const [requiredError, setRequiredError] = useState("");
     const [buttonLoading, setButtonLoading] = useState(false);
+    const [dateErrorMessage, setDateErrorMessage] = useState("");
     const descriptionRef = useRef();
+    // get today date
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let yyyy = String(today.getFullYear());
+    today = `${yyyy}-${mm}-${dd}`;
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => {
-        console.log(data);
-        const short_description = descriptionRef.current.value;
-        if (!short_description) {
-            return setRequiredError("Required *");
-        }
-        setButtonLoading(true);
 
-        setRequiredError("");
+    const onSubmit = (data) => {
+        setButtonLoading(true);
+        if (new Date(data.deadline) > new Date(today)) {
+            const description = descriptionRef.current.value;
+            if (!description) {
+                return setRequiredError("Required *");
+            }
+            setRequiredError("");
+            const taskData = {
+                title: data.title,
+                priority: data.priority,
+                status: data.status,
+                deadline: data.deadline,
+                description: description,
+            };
+            fetch("http://localhost:5000/tasks", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(taskData),
+            })
+                .then((res) => res.json())
+                .then((result) => {
+                    console.log(result);
+                    setButtonLoading(false);
+                    reset();
+
+                    toast.success("New Task Added");
+                });
+        } else {
+            setButtonLoading(false);
+            return setDateErrorMessage("Please provide a valid Date");
+        }
     };
     return (
         <section className="p-3 w-full text-white">
             <h3 className=" p-4  rounded-md  bg-gradient-to-r from-[#94f3b0] to-[#7abf88] font-semibold mb-6 text-black">
                 Add New Task
             </h3>
-            <div className="p-12 rounded-xl bg-[#091017]">
+            <div className="p-12 rounded-xl bg-[#1E2530]">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid ">
                         <div className=" flex gap-6">
@@ -102,6 +136,31 @@ const AddNewTask = () => {
                                             intensity level is required *
                                         </span>
                                     )}
+                                </label>
+                            </div>
+                            <div className=" mt-3">
+                                <label
+                                    htmlFor="buyerEmail"
+                                    className=" mt-6 font-bold text-sm "
+                                >
+                                    Deadline
+                                </label>
+                                <input
+                                    type="date"
+                                    {...register("deadline", {
+                                        required: true,
+                                    })}
+                                    className="w-full rounded-md border-0 bg-[#303644] py-3 mt-2"
+                                    placeholder="Deadline"
+                                />
+                                {/* error message for deadline*/}
+                                <label className="block md:w-64 w-full  text-sm text-[#d63031]">
+                                    {errors.deadline && (
+                                        <span>Deadline is required *</span>
+                                    )}
+                                </label>
+                                <label className="block md:w-64 w-full  text-sm text-[#d63031]">
+                                    {dateErrorMessage}
                                 </label>
                             </div>
                         </div>
