@@ -35,13 +35,16 @@ const AddNewTask = () => {
                 deadline: data.deadline,
                 description: description,
             };
-            fetch("http://localhost:5000/tasks", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(taskData),
-            })
+            fetch(
+                "https://task-management-server-cyan-omega.vercel.app/tasks",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(taskData),
+                }
+            )
                 .then((res) => res.json())
                 .then((result) => {
                     console.log(result);

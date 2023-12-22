@@ -1,23 +1,35 @@
 import PropTypes from "prop-types";
 import { BsStopwatchFill, BsThreeDotsVertical } from "react-icons/bs";
 import { MdDoubleArrow } from "react-icons/md";
-import { Avatar, Dropdown } from "flowbite-react";
+import { Avatar, Button, Dropdown, Modal } from "flowbite-react";
 import { BiSolidMessageSquare } from "react-icons/bi";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 const Task = ({ task, refetch, idx }) => {
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
     let speed = idx * 0.3;
-    const handleDeleteTask = (id) => {
-        fetch(`http://localhost:5000/tasks/${id}`, {
-            method: "DELETE",
-        })
+    const deleteTask = (id) => {
+        console.log(id);
+        fetch(
+            `https://task-management-server-cyan-omega.vercel.app/tasks/${id}`,
+            {
+                method: "DELETE",
+            }
+        )
             .then((rsc) => rsc.json())
             .then((result) => {
                 console.log(result);
                 toast.success("Successfully task deleted");
                 refetch();
             });
+    };
+    const handleDeleteTask = () => {
+        setOpenDeleteModal(true);
     };
     return (
         <motion.div
@@ -44,6 +56,39 @@ const Task = ({ task, refetch, idx }) => {
                                 Update
                             </button>
                         </Dropdown.Item>
+                        <Modal
+                            show={openDeleteModal}
+                            size="md"
+                            onClose={() => setOpenDeleteModal(false)}
+                            popup
+                        >
+                            <Modal.Header />
+                            <Modal.Body>
+                                <div className="text-center">
+                                    <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                                    <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                        Are you sure you want to delete this
+                                        product?
+                                    </h3>
+                                    <div className="flex justify-center gap-4">
+                                        <Button
+                                            color="failure"
+                                            onClick={() => deleteTask(task._id)}
+                                        >
+                                            {"Yes, I'm sure"}
+                                        </Button>
+                                        <Button
+                                            color="gray"
+                                            onClick={() =>
+                                                setOpenDeleteModal(false)
+                                            }
+                                        >
+                                            No, cancel
+                                        </Button>
+                                    </div>
+                                </div>
+                            </Modal.Body>
+                        </Modal>
                         <Dropdown.Item>
                             {" "}
                             <button

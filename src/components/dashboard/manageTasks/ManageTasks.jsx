@@ -15,7 +15,7 @@ const ManageTasks = () => {
     } = useQuery({
         queryKey: "tasks",
         queryFn: () =>
-            fetch("http://localhost:5000/tasks")
+            fetch("https://task-management-server-cyan-omega.vercel.app/tasks")
                 .then((res) => res.json())
                 .then((data) => data),
     });
